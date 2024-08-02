@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "DFzRMQ8nb72ATZ582Ds989+FkxWu/b/RabYgOr9AgBY=",
+  "Source": "AquaMania",
+  "BasePath": "_content/AquaMania",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "AquaMania\\wwwroot",
+      "Source": "AquaMania",
+      "ContentRoot": "C:\\Users\\Diego\\source\\repos\\AquaMania\\AquaMania\\wwwroot\\",
+      "BasePath": "_content/AquaMania",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

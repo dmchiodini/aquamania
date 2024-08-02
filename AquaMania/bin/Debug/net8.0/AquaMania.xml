@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AquaMania</name>
+    </assembly>
+    <members>
+        <member name="T:AquaMania.Controllers.UsuarioController">
+            <summary>
+            Controlador responsável por lidar com operações relacionadas aos usuários.
+            </summary>
+        </member>
+        <member name="M:AquaMania.Controllers.UsuarioController.GetAll">
+            <summary>
+            Responsável por buscar usuários.
+            </summary>
+            <returns>Os usuários cadastrados no sistema</returns>
+        </member>
+        <member name="M:AquaMania.Controllers.UsuarioController.GetById(System.Guid)">
+            <summary>
+            Responsável por buscar usuário através do id.
+            </summary>
+            <returns>O usuários cadastrado com o id informado.</returns>
+        </member>
+        <member name="M:AquaMania.Controllers.UsuarioController.Create(AquaMania.Model.Usuario.UsuarioRequest)">
+            <summary>
+            Responsável por criar usuário.
+            </summary>
+            <returns>O usuários cadastrado.</returns>
+        </member>
+        <member name="M:AquaMania.Controllers.UsuarioController.Update(AquaMania.Model.Usuario.UsuarioRequest)">
+            <summary>
+            Responsável por atualizar usuário.
+            </summary>
+            <returns>O usuários atualizado.</returns>
+        </member>
+        <member name="M:AquaMania.Controllers.UsuarioController.Delete(System.Guid)">
+            <summary>
+            Responsável por deletar usuário.
+            </summary>
+            <returns>O usuários deletado.</returns>
+        </member>
+    </members>
+</doc>
