@@ -70,3 +70,4 @@ C:\Users\Diego\source\repos\AquaMania\AquaMania\obj\Debug\net8.0\ref\AquaMania.d
 C:\Users\Diego\source\repos\AquaMania\AquaMania\bin\Debug\net8.0\AquaMania.staticwebassets.runtime.json
 C:\Users\Diego\source\repos\AquaMania\AquaMania\bin\Debug\net8.0\AquaMania.xml
 C:\Users\Diego\source\repos\AquaMania\AquaMania\obj\Debug\net8.0\AquaMania.xml
+C:\Users\Diego\source\repos\AquaMania\AquaMania\obj\Debug\net8.0\AquaMania.sourcelink.json

@@ -2,12 +2,14 @@
 using AquaMania.Model.Usuario;
 using AquaMania.Repository.Interface;
 using AquaMania.Service.Interface;
+using AquaMania.Utils;
 
 namespace AquaMania.Service;
 
 public class UsuarioService : IUsuarioService
 {
     private readonly IUsuarioRepository _usuarioRepository;
+    private readonly SystemUtils _utils = new SystemUtils();
 
     public UsuarioService(IUsuarioRepository usuarioRepository)
     {
@@ -18,7 +20,9 @@ public class UsuarioService : IUsuarioService
     {
         try
         {
+            usuario.Senha = _utils.HashPassword(usuario.Senha);
             var response = await _usuarioRepository.Create(usuario);
+
 
             return new Response<UsuarioResponse>
             {
@@ -161,6 +165,7 @@ public class UsuarioService : IUsuarioService
     {
         try
         {
+            usuario.Senha = _utils.HashPassword(usuario.Senha);
             var response = await _usuarioRepository.Update(usuario);
 
             if(response == null)
