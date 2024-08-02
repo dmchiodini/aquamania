@@ -24,7 +24,7 @@ public class UsuarioService : IUsuarioService
             {
                 Status = StatusCodes.Status201Created,
                 Success = true,
-                Message = "Usuário criado com sucesso",
+                Message = "Usuário criado com sucesso 132",
                 Data = response
             };
         }
