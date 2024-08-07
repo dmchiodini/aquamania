@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AquaMania")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+656055e4418fa7b8f080834f25a99e0bba78dc2d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f9b48936ba07cc5327925c701519f008793a89f")]
 [assembly: System.Reflection.AssemblyProductAttribute("AquaMania")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AquaMania")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
