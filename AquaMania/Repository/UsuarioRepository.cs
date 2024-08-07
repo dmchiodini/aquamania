@@ -117,6 +117,25 @@ public class UsuarioRepository : IUsuarioRepository
         }
     }
 
+    public async Task<UsuarioRequest> GetByEmail(string email)
+    {
+        try
+        {
+            var query = @$"SELECT * FROM usuarios WHERE email = '{email}'";
+
+            using (var connection = _dbContext.CreateConenction())
+            {
+                var response = await connection.QueryFirstOrDefaultAsync<UsuarioRequest>(query);
+                return response;
+            }
+        }
+        catch (Exception ex)
+        {
+
+            throw new Exception($"Exception while retrieving user! {ex}");
+        }
+    }
+
     public async Task<UsuarioResponse> Update(UsuarioRequest usuario)
     {
 
