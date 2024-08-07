@@ -3,8 +3,11 @@ using AquaMania.Repository;
 using AquaMania.Repository.Interface;
 using AquaMania.Service;
 using AquaMania.Service.Interface;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using System.Text;
 
 var environment = "";
 
@@ -34,13 +37,38 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 
 builder.Services.AddSingleton<DapperContext>();
 
+builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<ISerVivoRepository, SerVivoRepository>();
+builder.Services.AddScoped<ISerVivoService, SerVivoService>();
+
 
 builder.Services.AddControllers();
 
 builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
 builder.Services.AddCors();
+
+var privateKey = builder.Configuration.GetSection("PrivateKey").Value;
+
+builder.Services
+    .AddAuthentication(x =>
+    {
+        x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(x =>
+    {
+        x.RequireHttpsMetadata = false;
+        x.SaveToken = true;
+        x.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(privateKey)),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
