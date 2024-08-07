@@ -4,6 +4,52 @@
         <name>AquaMania</name>
     </assembly>
     <members>
+        <member name="T:AquaMania.Controllers.SerVivoController">
+            <summary>
+            Controlador responsável por lidar com operações relacionadas aos seres vivos.
+            </summary>
+        </member>
+        <member name="M:AquaMania.Controllers.SerVivoController.Create(AquaMania.Model.SerVivo.SerVivoRequest)">
+            <summary>
+            Responsável por criar ser vivo.
+            </summary>
+            <returns>O ser vivo cadastrado.</returns>
+        </member>
+        <member name="M:AquaMania.Controllers.SerVivoController.GetAll">
+            <summary>
+            Responsável por buscar seres vivos.
+            </summary>
+            <returns>Os seres vivos cadastrados no sistema</returns>
+        </member>
+        <member name="M:AquaMania.Controllers.SerVivoController.GetById(System.Guid)">
+            <summary>
+            Responsável por buscar ser vivo através do id.
+            </summary>
+            <returns>O ser vivo cadastrados no sistema</returns>
+        </member>
+        <member name="M:AquaMania.Controllers.SerVivoController.Delete(System.Guid)">
+            <summary>
+            Responsável por deletar ser vivo através do id.
+            </summary>
+            <returns>O ser vivo deletado do sistema</returns>
+        </member>
+        <member name="M:AquaMania.Controllers.SerVivoController.Update(AquaMania.Model.SerVivo.SerVivoRequest)">
+            <summary>
+            Responsável por atualizar ser vivo.
+            </summary>
+            <returns>O ser vivo atualizado no sistema</returns>
+        </member>
+        <member name="T:AquaMania.Controllers.SessionController">
+            <summary>
+            Controlador responsável por lidar com operações relacionadas a sessão.
+            </summary>
+        </member>
+        <member name="M:AquaMania.Controllers.SessionController.CreateSession(AquaMania.Model.Session.CreateSession)">
+            <summary>
+            Responsável por criar uma nova sessão
+            </summary>
+            <returns>Dados do usuário cadastrado no sistema</returns>
+        </member>
         <member name="T:AquaMania.Controllers.UsuarioController">
             <summary>
             Controlador responsável por lidar com operações relacionadas aos usuários.

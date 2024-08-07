@@ -7,6 +7,7 @@ public interface IUsuarioService
 {
     Task<Response<List<UsuarioResponse>>> GetAll();
     Task<Response<UsuarioResponse>> GetById(Guid id);
+    Task<Response<UsuarioRequest>> GetByEmail(string email);
     Task<Response<UsuarioResponse>> Create(UsuarioRequest usuario);
     Task<Response<UsuarioResponse>> Update(UsuarioRequest usuario);
     Task<Response<UsuarioResponse>> Delete(Guid id);

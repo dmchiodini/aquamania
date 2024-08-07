@@ -5,7 +5,8 @@ namespace AquaMania.Repository.Interface;
 public interface IUsuarioRepository
 {
     Task<List<UsuarioResponse>> GetAll();
-    Task<UsuarioResponse> GetById(Guid id); 
+    Task<UsuarioResponse> GetById(Guid id);
+    Task<UsuarioRequest>  GetByEmail(string email);
     Task<UsuarioResponse> Create(UsuarioRequest usuario);
     Task<UsuarioResponse> Update(UsuarioRequest usuario);
     Task<UsuarioResponse> Delete(Guid id);  

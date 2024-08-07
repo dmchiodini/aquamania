@@ -2,31 +2,30 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net.Mail;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 
 namespace AquaMania.Utils;
 
 public class SystemUtils
 {
-    public string GenerateToken(string privateKey, int userId, string userName, string email)
+    public string GenerateToken(string secretKey, Guid id, string name, string email)
     {
         JwtSecurityTokenHandler jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-        byte[] key = Encoding.ASCII.GetBytes(privateKey);
+        byte[] bytes = Encoding.ASCII.GetBytes(secretKey);
         var credentials = new SigningCredentials(
-            new SymmetricSecurityKey(key),
+            new SymmetricSecurityKey(bytes),
             SecurityAlgorithms.HmacSha256Signature);
-
-
         SecurityTokenDescriptor securityTokenDescriptor = new SecurityTokenDescriptor();
-
         securityTokenDescriptor.Subject = new ClaimsIdentity(new Claim[3]
         {
-        new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", email),
-        new Claim("name", userName),
-        new Claim("id", userId.ToString())
+            new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", email),
+            new Claim("name", name),
+            new Claim("id", id.ToString())
         });
-
         securityTokenDescriptor.Expires = DateTime.UtcNow.AddHours(3);
         securityTokenDescriptor.SigningCredentials = credentials;
         SecurityTokenDescriptor tokenDescriptor = securityTokenDescriptor;
@@ -34,7 +33,6 @@ public class SystemUtils
 
         SecurityToken token = jwtSecurityTokenHandler.CreateToken(tokenDescriptor);
         return jwtSecurityTokenHandler.WriteToken(token);
-
     }
 
     public DecodeTokenModel GetDecodeToken(string token, string secret)
@@ -56,7 +54,7 @@ public class SystemUtils
                 }
                 else if (claim.Type == "id")
                 {
-                    decodedToken.Id = Convert.ToInt32(claim.Value);
+                    decodedToken.Id = new Guid(claim.Value);
                 }
             }
 
@@ -65,7 +63,6 @@ public class SystemUtils
 
         throw new Exception("invalidToken");
     }
-
     public bool IsValidToken(string token, string secret)
     {
         if (string.IsNullOrEmpty(token))
@@ -89,7 +86,6 @@ public class SystemUtils
             return false;
         }
     }
-
     public string HashPassword(string password)
     {
         return new PasswordHasher<object?>().HashPassword(null, password);

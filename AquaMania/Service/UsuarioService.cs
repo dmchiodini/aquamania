@@ -123,6 +123,45 @@ public class UsuarioService : IUsuarioService
         }
     }
 
+    public async Task<Response<UsuarioRequest>> GetByEmail(string email)
+    {
+        try
+        {
+            var response = await _usuarioRepository.GetByEmail(email);
+
+            if (response == null)
+            {
+                return new Response<UsuarioRequest>
+                {
+                    Status = StatusCodes.Status204NoContent,
+                    Success = true,
+                    Message = $"Não foi encontrado usuário com o email '{email}'",
+                    Data = null
+                };
+            }
+
+            return new Response<UsuarioRequest>
+            {
+                Status = StatusCodes.Status200OK,
+                Success = true,
+                Message = "Usuário retornado com sucesso!",
+                Data = response
+            };
+        }
+        catch (Exception ex)
+        {
+
+            return new Response<UsuarioRequest>
+            {
+                Status = StatusCodes.Status500InternalServerError,
+                Success = false,
+                Message = $"{ex.Message}",
+                Data = null,
+                Error = "InternalServerError"
+            };
+        }
+    }
+
     public async Task<Response<List<UsuarioResponse>>> GetAll()
     {
         try

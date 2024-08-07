@@ -1,6 +1,7 @@
 ﻿using AquaMania.Model;
 using AquaMania.Model.Usuario;
 using AquaMania.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
@@ -12,6 +13,7 @@ namespace AquaMania.Controllers;
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 [Consumes("application/json")]
 [Produces("application/json")]
 public class UsuarioController : ControllerBase
@@ -62,6 +64,7 @@ public class UsuarioController : ControllerBase
     /// </summary>
     /// <returns>O usuários cadastrado.</returns>
     [HttpPost]
+    [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
